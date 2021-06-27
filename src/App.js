@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Header from './pages/Header';
+import Body from './pages/Body';
+
+let appText = 'Hello Body!';
 
 function App() {
+
+  let [bodyText, setBodyText] = useState('NULL');
+
+  let changeBodyText = (text) => {
+    setBodyText(text);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      App:<br/>
+      {bodyText}<br/><br/>
+      Head: <Header bodyText={bodyText}/><br/>
+      Body: <Body appText={appText} changeBodyText={changeBodyText}/><br/>
     </div>
   );
 }
 
 export default App;
+
+/*
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+import LandingPage from './components/views/LandingPage/LandingPage';
+
+<div>
+  <Router>
+    <Switch>
+      <Route exact path="/" component={Auth(LandingPage, true )} />
+      <Route exact path="/login" component={Auth(LoginPage, false )} />
+      <Route exact path="/register" component={Auth(RegisterPage, false )} />
+    </Switch>
+  </Router>
+</div>
+*/
